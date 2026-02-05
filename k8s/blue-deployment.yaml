@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: app
-        image: karthikchitikela25/devops-app:v1.
+        image: karthikchitikela25/devops-app:v2.
         ports:
         - containerPort: 8080
