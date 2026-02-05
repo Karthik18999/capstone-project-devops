@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DemoApplication {
     @GetMapping("/")
     public String home() {
-        return "DevOps CI/CD Project - Blue Version";
+        return "DevOps CI/CD Project - Karthik Version";
     }
 
     public static void main(String[] args) {
