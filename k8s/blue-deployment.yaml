@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: app
-        image: yourdockerhub/devops-app:latest
+        image: karthikchitikela25/devops-app:v1.
         ports:
         - containerPort: 8080
