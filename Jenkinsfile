@@ -1,3 +1,5 @@
+
+
 pipeline {
     agent any
 
@@ -31,6 +33,13 @@ pipeline {
                     docker push $DOCKER_IMAGE:latest
                     '''
                 }
+            }
+        }
+
+        stage('Deploy to Kubernetes') {
+            steps {
+                sh 'kubectl apply -f k8s/green-deployment.yaml'
+                sh 'kubectl apply -f k8s/service.yaml'
             }
         }
     }
