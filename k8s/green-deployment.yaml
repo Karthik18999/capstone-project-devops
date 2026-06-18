@@ -17,5 +17,6 @@ spec:
       containers:
       - name: app
         image: karthikchitikela25/devops-app:v2
+        imagePullPolicy: Always   
         ports:
         - containerPort: 8080
