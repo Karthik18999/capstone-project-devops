@@ -1,17 +1,19 @@
-
-
 pipeline {
     agent any
 
     environment {
         DOCKER_IMAGE = "karthikchitikela25/devops-app"
+        // Explicitly inject the custom binary path into the Jenkins pipeline environment
+        PATH = "/var/lib/jenkins/bin:/usr/bin:/usr/local/bin:${env.PATH}"
     }
 
     stages {
-
         stage('Build JAR') {
             steps {
-                sh 'cd app && mvn clean package'
+                // Using dir() isolates the directory switch cleanly so it doesn't leak
+                dir('app') {
+                    sh 'mvn clean package'
+                }
             }
         }
 
@@ -38,9 +40,9 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
-                sh 'kubectl apply -f k8s/green-deployment.yaml'
-                sh 'kubectl apply -f k8s/service.yaml'
+                // With PATH defined in environment, you can now use standard clean syntax safely
+                sh "kubectl apply -f k8s/green-deployment.yaml"
             }
         }
     }
-}
+}}
