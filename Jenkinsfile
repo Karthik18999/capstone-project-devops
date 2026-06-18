@@ -38,7 +38,7 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
-                sh "/var/lib/jenkins/bin kubectl apply -f k8s/green-deployment.yaml"
+                sh "/var/lib/jenkins/bin/kubectl apply -f k8s/green-deployment.yaml"
             }
         }
     }
